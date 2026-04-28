@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yash Soni | Software Engineer & Data Engineer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    @font-face { font-family: 'SF Pro Display'; src: local('SF Pro Display'), local('.SFNSDisplay-Regular'), local('SFProDisplay-Regular'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'SF Pro Display'; src: local('SF Pro Display'), local('.SFNSDisplay-Regular'), local('SFProDisplay-Regular'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'SF Pro Display'; src: local('SF Pro Display Medium'), local('.SFNSDisplay-Medium'), local('SFProDisplay-Medium'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'SF Pro Display'; src: local('SF Pro Display Semibold'), local('.SFNSDisplay-Semibold'), local('SFProDisplay-Semibold'); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'SF Pro Display'; src: local('SF Pro Display Bold'), local('.SFNSDisplay-Bold'), local('SFProDisplay-Bold'); font-weight: 700; font-style: normal; font-display: swap; }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="view-toggle" id="viewToggle">
+      <button class="view-toggle-btn active" data-view="website">Website</button>
+      <button class="view-toggle-btn" data-view="ai"><span class="view-toggle-dot" aria-hidden="true"></span>AI Chat</button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#tech-stack">Skills</a></li>
+      <li><a href="#certificates">Certs</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://www.linkedin.com/in/yashsoni176" target="_blank" aria-label="LinkedIn">
+        <img src="Images/linkedin.png" alt="LinkedIn" />
+      </a>
+      <a href="https://github.com/yashnitinsoni" target="_blank" aria-label="GitHub">
+        <img src="Images/github.png" alt="GitHub" />
+      </a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#tech-stack">Skills</a></li>
+      <li><a href="#certificates">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- AI Chatbot Overlay -->
+  <div class="chatbot-overlay" id="chatbotOverlay">
+    <div class="chatbot-container">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar">YS</div>
+        <div class="chatbot-header-text">
+          <h3>Yash's AI Assistant</h3>
+          <p>Ask me anything about Yash</p>
+        </div>
+        <div class="chatbot-status"></div>
+      </div>
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chat-msg bot">
+          <div class="chat-msg-avatar">YS</div>
+          <div class="chat-bubble">Hi! I'm Yash's AI assistant. I know everything about his experience, skills, projects, and education. Ask me anything — I'm here to help!</div>
+        </div>
+      </div>
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chat-suggestion" data-q="What is Yash's work experience?">Work experience</button>
+        <button class="chat-suggestion" data-q="What are Yash's technical skills?">Technical skills</button>
+        <button class="chat-suggestion" data-q="What projects has Yash worked on?">Projects</button>
+        <button class="chat-suggestion" data-q="What is Yash's education?">Education</button>
+        <button class="chat-suggestion" data-q="How can I contact Yash?">Contact info</button>
+        <button class="chat-suggestion" data-q="Why should I hire Yash?">Why hire Yash?</button>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" class="chatbot-input" id="chatInput" placeholder="Ask about Yash's experience, skills, projects..." autocomplete="off" />
+        <button class="chatbot-send" id="chatSend">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Website Content -->
+  <div class="website-content" id="websiteContent">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <!-- UPDATED: title changed to Software Engineer & Data Engineer -->
+          <p class="hero-greeting fade-up">Software Engineer & Data Engineer</p>
+          <h1 class="hero-name fade-up" style="animation-delay: 0.1s">Yash Soni</h1>
+
+          <div class="terminal-window fade-up" style="animation-delay: 0.2s">
+            <div class="terminal-header">
+              <div class="terminal-controls">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="terminal-title">yash@portfolio ~ </div>
+              <div></div>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line">
+                <span class="prompt">$</span>
+                <span class="command" id="typingCommand"></span>
+                <span class="terminal-cursor" id="termCursor"></span>
+              </div>
+              <div class="terminal-output" id="terminalOutput"></div>
+            </div>
+          </div>
+
+          <div class="hero-stats fade-up" style="animation-delay: 0.35s" id="heroStats">
+            <div class="stat-box">
+              <div class="stat-number" data-value="3" data-suffix="+">0</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <!-- UPDATED: Companies changed to 3 -->
+            <div class="stat-box">
+              <div class="stat-number" data-value="3" data-suffix="">0</div>
+              <div class="stat-label">Companies</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" data-value="6" data-suffix="+">0</div>
+              <div class="stat-label">Tools Mastered</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" data-value="2" data-suffix="">0</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+          </div>
+
+          <p class="hero-bio fade-up" style="animation-delay: 0.4s">
+            Passionate about building AI-powered applications, data pipelines, and dashboards that drive meaningful decisions.
+          </p>
+          <!-- UPDATED: bio updated to match resume -->
+          <p class="hero-bio fade-up" style="animation-delay: 0.45s">
+            Master's in Information Systems from the University of Maryland, Baltimore County. Currently working as a Software Engineer at Hirello.ai.
+          </p>
+          <button class="btn-resume fade-up" style="animation-delay: 0.5s" id="resumeBtn" onclick="document.getElementById('resumeModal').classList.add('active')">
+            <img src="Images/resume.png" alt="PDF" class="btn-icon" />
+            Resume
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="section" id="journey">
+      <h2 class="section-title reveal">My Journey</h2>
+      <div class="timeline">
+
+        <!-- UPDATED: Hirello — title, date, and all bullets updated -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><img src="Images/work.svg" alt="Work" /></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <span class="timeline-date">December 2025 – Present</span>
+                <h3>Hirello.ai, USA</h3>
+                <h4>Software Engineer</h4>
+              </div>
+            </div>
+            <ul class="experience-list">
+              <li><strong>Engineered a Gemini AI pipeline</strong> linking 1000+ email threads to dashboard cards for one-click conversation access.</li>
+              <li><strong>Proactively integrated CoreSignal API</strong> to build a real-time US job supply and demand map across 50 states, independently adding a 24-hour cache layer to eliminate redundant API calls and boost page load performance.</li>
+              <li><strong>Led the migration</strong> of 5 modules and 10+ pages to a redesigned frontend using Vue.js and TypeScript, owning UI consistency improvements across 4 key features.</li>
+              <li><strong>Secured 15+ API endpoints</strong> by implementing a JWT authentication layer in FastAPI, validating bearer tokens from request headers and cookies across all product surfaces.</li>
+              <li><strong>Collaborated with 2 cross-functional stakeholders</strong> across engineering and product teams to clarify requirements, align priorities, and deliver features on schedule.</li>
+            </ul>
+            <div class="tags">
+              <span>Python</span><span>Gemini AI</span><span>Vertex AI</span><span>LLM Integration</span><span>FastAPI</span><span>REST APIs</span><span>Vue.js</span><span>TypeScript</span><span>JWT Auth</span><span>CoreSignal API</span><span>Docker</span><span>Bitbucket</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><img src="Images/education.png" alt="Education" /></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <img src="Images/UMBC.png" alt="UMBC" class="timeline-logo" />
+              <div>
+                <span class="timeline-date">January 2024 – December 2025</span>
+                <h3>University of Maryland, Baltimore County</h3>
+                <h4>Master of Science in Information Systems | GPA – 3.9</h4>
+              </div>
+            </div>
+            <div class="tags">
+              <span>Management Information Systems</span><span>Data Mining</span><span>Data Analysis for Cybersecurity</span><span>Decision Making Support Systems</span><span>Advanced Database Projects</span><span>Statistical Learning for Data Analysis</span><span>Structured System Analysis and Design</span><span>Interfaces For Info. Visualization & Retrieval</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPDATED: Harman — title updated, bullets updated to match resume -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><img src="Images/work.svg" alt="Work" /></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <img src="Images/Harman.png" alt="Harman" class="timeline-logo" />
+              <div>
+                <span class="timeline-date">January 2022 – December 2023</span>
+                <h3>Harman International, India</h3>
+                <h4>Analytics Engineer</h4>
+              </div>
+            </div>
+            <ul class="experience-list">
+              <li><strong>Streamlined data ingestion and validation</strong> into AWS Redshift using Apache Airflow and Python, eliminating 8–10 hours of manual processing per month and strengthening pipeline reliability.</li>
+              <li><strong>Partnered with client teams</strong> to extract and consolidate 200K+ weekly records via SQL, delivering clean datasets to reporting teams and supporting data-driven decisions across accounts.</li>
+              <li><strong>Designed 7+ client KPI dashboards</strong> tracking throughput and service performance metrics, enabling consistent weekly reporting and data-driven decision making across accounts.</li>
+              <li><strong>Documented data pipelines and dashboards</strong>, enabling faster onboarding across 3+ client accounts.</li>
+            </ul>
+            <div class="tags">
+              <span>Python</span><span>SQL</span><span>AWS Redshift</span><span>Apache Airflow</span><span>Tableau</span><span>ETL</span><span>Data Pipelines</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPDATED: Robotics Forum — bullets updated to match resume -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><img src="Images/work.svg" alt="Work" /></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <span class="timeline-date">January 2021 – December 2021</span>
+                <h3>The Robotics Forum – VIT, India</h3>
+                <h4>Data Analyst</h4>
+              </div>
+            </div>
+            <ul class="experience-list">
+              <li><strong>Processed 500+ robotics sensor datasets</strong> using SQL and Python, advancing data quality and reporting accuracy.</li>
+              <li><strong>Deployed 4+ Tableau dashboards</strong> surfacing performance trends and insights for weekly faculty reviews.</li>
+              <li><strong>Drove logging standardization</strong> across 5+ experiment types, establishing data quality standards for the research team.</li>
+            </ul>
+            <div class="tags">
+              <span>SQL</span><span>Python</span><span>Tableau</span><span>Data Cleaning</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><img src="Images/education.png" alt="Education" /></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <img src="Images/VIT.png" alt="VIT" class="timeline-logo" />
+              <div>
+                <span class="timeline-date">June 2018 – May 2022</span>
+                <h3>Vishwakarma Institute of Technology, Pune, India</h3>
+                <h4>Bachelor of Technology in Computer Science | GPA – 3.71</h4>
+              </div>
+            </div>
+            <div class="tags">
+              <span>Python</span><span>Data Structures and Algorithms</span><span>Object Oriented Programming</span><span>Database Management Systems</span><span>Java</span><span>C++</span><span>HTML, CSS, PHP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section — UPDATED: added AI & ML category, added missing skills -->
+    <section class="section" id="tech-stack">
+      <h2 class="section-title reveal">Technical Skills & Expertise</h2>
+      <div class="skills-grid reveal">
+        <div class="skill-category">
+          <h3>Programming & Databases</h3>
+          <div class="skill-items">
+            <div class="skill-chip"><img src="Images/python.png" alt="Python" />Python</div>
+            <div class="skill-chip"><img src="Images/sql.png" alt="SQL" />SQL</div>
+            <div class="skill-chip">JavaScript</div>
+            <div class="skill-chip">TypeScript</div>
+            <div class="skill-chip"><img src="Images/mysql.png" alt="MySQL" />MySQL</div>
+            <div class="skill-chip"><img src="Images/postgresql.png" alt="PostgreSQL" />PostgreSQL</div>
+            <div class="skill-chip">MongoDB</div>
+            <div class="skill-chip">DynamoDB</div>
+            <div class="skill-chip">Pandas</div>
+            <div class="skill-chip">NumPy</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Backend & APIs</h3>
+          <div class="skill-items">
+            <div class="skill-chip">FastAPI</div>
+            <div class="skill-chip">REST APIs</div>
+            <div class="skill-chip">JWT Auth</div>
+            <div class="skill-chip">Apache Airflow</div>
+            <div class="skill-chip">Docker</div>
+            <div class="skill-chip">ETL Pipelines</div>
+            <div class="skill-chip">Data Modeling</div>
+            <div class="skill-chip">JSON</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <div class="skill-items">
+            <div class="skill-chip">React</div>
+            <div class="skill-chip">Vue.js</div>
+            <div class="skill-chip">Next.js</div>
+            <div class="skill-chip">Streamlit</div>
+            <div class="skill-chip">Tailwind CSS</div>
+            <div class="skill-chip">HTML</div>
+            <div class="skill-chip">CSS</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>AI & ML</h3>
+          <div class="skill-items">
+            <div class="skill-chip">RAG Pipelines</div>
+            <div class="skill-chip">LLM Integration</div>
+            <div class="skill-chip">Vector Search</div>
+            <div class="skill-chip">Prompt Engineering</div>
+            <div class="skill-chip">ChromaDB</div>
+            <div class="skill-chip">Gemini AI</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Visualization</h3>
+          <div class="skill-items">
+            <div class="skill-chip"><img src="Images/tableau.png" alt="Tableau" />Tableau</div>
+            <div class="skill-chip">Streamlit</div>
+            <div class="skill-chip">Matplotlib</div>
+            <div class="skill-chip">Seaborn</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Cloud & Platforms</h3>
+          <div class="skill-items">
+            <div class="skill-chip"><img src="Images/AWS.png" alt="AWS" />AWS S3</div>
+            <div class="skill-chip"><img src="Images/AWS.png" alt="AWS" />AWS Redshift</div>
+            <div class="skill-chip"><img src="Images/AWS.png" alt="AWS" />AWS Lambda</div>
+            <div class="skill-chip"><img src="Images/AWS.png" alt="AWS" />AWS Glue</div>
+            <div class="skill-chip"><img src="Images/AWS.png" alt="AWS" />AWS Athena</div>
+            <div class="skill-chip"><img src="Images/snowflake.png" alt="Snowflake" />Snowflake</div>
+            <div class="skill-chip">Supabase</div>
+            <div class="skill-chip">ChromaDB</div>
+            <div class="skill-chip"><img src="Images/git.png" alt="Git" />Git</div>
+            <div class="skill-chip"><img src="Images/github.png" alt="GitHub" />GitHub</div>
+            <div class="skill-chip">Jira</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section" id="certificates">
+      <h2 class="section-title reveal">Certifications</h2>
+      <div class="cert-grid reveal">
+        <a href="https://www.hackerrank.com/certificates/9d57d2fde593" target="_blank" class="cert-card">
+          <img src="Images/hackerrank.png" alt="HackerRank SQL" />
+          <span>HackerRank Advanced SQL</span>
+        </a>
+        <a href="AWS Certified Cloud Practitioner certificate.pdf" target="_blank" class="cert-card">
+          <img src="Images/awscppcertificate.png" alt="AWS CCP" />
+          <span>AWS Certified Cloud Practitioner</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects Section — UPDATED: replaced all 3 projects with resume projects -->
+    <section class="section" id="projects">
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-number-header">
+            <span class="project-num">01</span>
+            <div class="project-icon-row">
+              <span class="project-icon" title="Next.js">⚡</span>
+              <span class="project-icon" title="Python">🐍</span>
+              <span class="project-icon" title="AI">🤖</span>
+              <span class="project-icon" title="Vector DB">🧠</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Second Brain for YouTube</h3>
+            <p class="project-subtitle">Turn any YouTube video into a searchable AI knowledge base.</p>
+            <ul class="project-details">
+              <li><strong>Tech Stack:</strong> Next.js, FastAPI, Python, ChromaDB, Supabase</li>
+              <li><strong>What it does:</strong> Converts any YouTube video into a searchable personal knowledge base with auto-generated summaries, flashcards, and a Q&A chat interface — answers include clickable timestamp links back to the exact video moment.</li>
+              <li><strong>Key engineering:</strong> RAG pipeline with transcript extraction, 60-second timestamp-aware chunking, and vector search. Personal knowledge vault with cross-video semantic search.</li>
+            </ul>
+            <div class="tags"><span>Next.js</span><span>FastAPI</span><span>Python</span><span>ChromaDB</span><span>Supabase</span><span>RAG</span><span>LLM</span></div>
+            <!-- Temporarily hidden: re-enable when project link is ready
+            <a href="https://github.com/yashnitinsoni" target="_blank" class="btn-github"><img src="Images/github.png" alt="GitHub" /> View Project</a>
+            -->
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-number-header">
+            <span class="project-num">02</span>
+            <div class="project-icon-row">
+              <span class="project-icon" title="Python">🐍</span>
+              <span class="project-icon" title="AWS">☁️</span>
+              <span class="project-icon" title="Data">📊</span>
+              <span class="project-icon" title="Pipeline">🔄</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>FDA Food Recall Intelligence Pipeline</h3>
+            <p class="project-subtitle">Automated pipeline tracking 5K+ FDA recall records across 30+ food categories.</p>
+            <ul class="project-details">
+              <li><strong>Tech Stack:</strong> Python, MongoDB, AWS S3, AWS Glue, Airflow</li>
+              <li><strong>What it does:</strong> Ingests 5K+ FDA recall records via openFDA API, transforms and stores datasets as Parquet files in AWS S3 using Airflow DAGs, catalogs via AWS Glue, and visualizes trends by category, state, and date range.</li>
+              <li><strong>Key engineering:</strong> End-to-end automated data pipeline with Airflow orchestration, AWS Glue cataloging, and an interactive dashboard for food safety analysis.</li>
+            </ul>
+            <div class="tags"><span>Python</span><span>MongoDB</span><span>AWS S3</span><span>AWS Glue</span><span>Airflow</span><span>ETL</span></div>
+            <!-- Temporarily hidden: re-enable when project link is ready
+            <a href="https://github.com/yashnitinsoni" target="_blank" class="btn-github"><img src="Images/github.png" alt="GitHub" /> View Project</a>
+            -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <h2 class="section-title reveal">Get In Touch</h2>
+      <div class="contact-wrapper reveal">
+        <div class="contact-info">
+          <h3>Yash Soni</h3>
+          <p><img src="Images/email.png" alt="Email" /> yashnitinsoni.17@gmail.com</p>
+          <p><img src="Images/phone.png" alt="Phone" /> +1 (667)-320-5799</p>
+          <p><img src="Images/location.png" alt="Location" /> Maryland, United States</p>
+        </div>
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xdkekepd" method="POST">
+          <div class="form-row">
+            <input type="text" name="first_name" placeholder="First Name" required />
+            <input type="text" name="last_name" placeholder="Last Name" required />
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="tel" name="phone" placeholder="Phone Number" required />
+          </div>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn-send">Send Message</button>
+          <p class="form-success" id="form-message">Message sent successfully!</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Yash Soni. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Resume Modal -->
+  <div class="resume-modal" id="resumeModal">
+    <div class="resume-modal-backdrop" onclick="document.getElementById('resumeModal').classList.remove('active')"></div>
+    <div class="resume-modal-content">
+      <div class="resume-modal-header">
+        <span>Yash Soni — Resume</span>
+        <div class="resume-modal-actions">
+          <a href="Yash_Soni_Resume .pdf" target="_blank" class="resume-modal-download">Open in New Tab</a>
+          <button class="resume-modal-close" onclick="document.getElementById('resumeModal').classList.remove('active')">&times;</button>
+        </div>
+      </div>
+      <iframe src="" data-src="Yash_Soni_Resume .pdf" class="resume-iframe" id="resumeIframe"></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

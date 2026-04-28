@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 850" width="400" height="850">
+  <!-- Minimal line art - casual standing man, one hand near chin (thoughtful pose) -->
+  <!-- Style inspired by reference: bold clean contour lines, no fill, transparent bg -->
+  <g fill="none" stroke="#c9b99a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Hair - short, slightly messy -->
+    <path d="M178 88 Q172 62 188 46 Q200 36 215 40 Q232 46 236 62 Q238 75 234 88" />
+    <path d="M182 75 Q186 60 196 50 Q208 44 220 48 Q230 55 233 70" />
+
+    <!-- Head outline -->
+    <path d="M178 88 Q174 105 176 120 Q179 138 186 148 Q196 160 205 162 Q214 160 224 148 Q231 138 234 120 Q236 105 234 88" />
+
+    <!-- Ear (right side visible) -->
+    <path d="M236 102 Q244 106 245 116 Q244 124 236 126" />
+
+    <!-- Slight facial features - minimal -->
+    <!-- Subtle jawline -->
+    <path d="M186 148 Q190 152 196 155" />
+    <path d="M224 148 Q220 152 214 155" />
+
+    <!-- Neck slightly tilted -->
+    <path d="M196 160 L192 182" />
+    <path d="M218 160 L222 180" />
+
+    <!-- Left shoulder (goes up to hand near chin) -->
+    <path d="M192 182 Q175 188 155 198 Q138 210 128 228 L118 265" />
+
+    <!-- Left arm - bent up, hand near chin (thoughtful) -->
+    <path d="M118 265 L112 290 Q108 310 115 325 Q125 340 140 348 L160 355 Q170 358 178 352 Q184 345 186 335 L192 310" />
+    <!-- Left hand near face -->
+    <path d="M186 335 Q188 320 192 310 Q196 300 198 290" />
+    <!-- Fingers near chin -->
+    <path d="M186 335 Q182 330 180 325" />
+    <path d="M186 335 Q184 328 185 322" />
+
+    <!-- Right shoulder -->
+    <path d="M222 180 Q242 186 260 196 Q278 208 288 228 L298 265" />
+
+    <!-- Right arm - relaxed, hand in pocket -->
+    <path d="M298 265 L305 300 Q308 320 305 340 Q298 360 280 375 L258 388" />
+
+    <!-- Torso - jacket/hoodie -->
+    <path d="M118 265 Q122 300 128 340 L135 380 Q142 400 160 410" />
+    <path d="M298 265 Q294 300 288 340 L282 380 Q275 400 258 410" />
+
+    <!-- Jacket neckline / collar -->
+    <path d="M192 182 Q200 194 208 196 Q216 194 222 180" />
+
+    <!-- Jacket front opening -->
+    <path d="M208 196 L210 420" stroke-width="2" stroke-dasharray="5 8" />
+
+    <!-- Pocket line -->
+    <path d="M160 385 Q180 392 210 394 Q240 392 258 385" />
+
+    <!-- Jacket hem -->
+    <path d="M160 410 Q185 418 210 420 Q235 418 258 410" />
+
+    <!-- Waistline / belt -->
+    <path d="M155 430 Q180 436 210 438 Q240 436 262 430" />
+
+    <!-- Left leg -->
+    <path d="M160 430 Q154 490 150 550 Q148 610 150 670 Q152 720 155 760" />
+    <path d="M198 438 Q195 490 192 550 Q190 610 190 670 Q190 720 190 760" />
+
+    <!-- Right leg - slightly apart -->
+    <path d="M222 438 Q225 490 228 550 Q230 610 230 670 Q230 720 230 760" />
+    <path d="M262 430 Q264 490 265 550 Q265 610 264 670 Q262 720 260 760" />
+
+    <!-- Left shoe -->
+    <path d="M152 760 Q145 766 136 768 Q128 768 125 764 Q126 758 135 756 Q145 755 155 760" />
+    <path d="M188 760 Q182 766 174 768 Q166 768 163 764 Q164 758 172 756 Q182 755 190 760" />
+
+    <!-- Right shoe -->
+    <path d="M228 760 Q234 766 242 768 Q250 768 254 764 Q252 758 244 756 Q234 755 228 760" />
+    <path d="M258 760 Q264 766 274 768 Q282 768 286 764 Q284 758 276 756 Q266 755 258 760" />
+
+  </g>
+</svg>
