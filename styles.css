@@ -150,7 +150,8 @@ ul { list-style: none; }
 .view-toggle-dot {
   width: 8px;
   height: 8px;
-  margin-right: 14px;
+  margin-left: 6px;
+  margin-right: 8px;
   background: #28c840;
   border-radius: 50%;
   flex-shrink: 0;
@@ -451,7 +452,8 @@ ul { list-style: none; }
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);
-  font-size: 13px;
+  /* 16px+ prevents iOS Safari from zooming the viewport when focusing the field */
+  font-size: 16px;
   font-family: var(--font);
   outline: none;
   transition: border-color 0.3s ease;

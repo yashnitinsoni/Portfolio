@@ -95,6 +95,12 @@ const YASH = {
   ]
 };
 
+// Mouse/trackpad UIs — auto-focus the chat input. Touch-primary devices skip focus so Safari does not
+// open the keyboard until the user taps the field (and iOS avoids zoom quirks when combined with 16px input CSS).
+function prefersFinePointer() {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+}
+
 // ===== CHATBOT ENGINE =====
 // Sends messages to /api/chat (Vercel serverless function → Groq LLaMA 3.3 70B).
 // Maintains conversation history so follow-up questions work naturally.
@@ -217,7 +223,7 @@ class ChatBot {
     } finally {
       this.isStreaming = false;
       this.sendBtn.disabled = false;
-      this.inputEl.focus();
+      if (prefersFinePointer()) this.inputEl.focus();
     }
   }
 }
@@ -238,7 +244,7 @@ class ViewToggle {
     if (view === "ai") {
       this.websiteContent.classList.add("hidden");
       this.chatOverlay.classList.add("active");
-      document.getElementById("chatInput").focus();
+      if (prefersFinePointer()) document.getElementById("chatInput").focus();
     } else {
       this.chatOverlay.classList.remove("active");
       this.websiteContent.classList.remove("hidden");
