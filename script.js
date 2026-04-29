@@ -228,6 +228,51 @@ class ChatBot {
   }
 }
 
+// ===== THEME (light / dark) =====
+const THEME_STORAGE_KEY = "theme";
+
+function getStoredThemeChoice() {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function effectiveTheme() {
+  const saved = getStoredThemeChoice();
+  if (saved === "light" || saved === "dark") return saved;
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
+function applyDocumentTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const sw = document.getElementById("themeSwitch");
+  if (!sw) return;
+  const isDark = theme === "dark";
+  sw.setAttribute("aria-checked", isDark ? "true" : "false");
+  sw.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+}
+
+class ThemeToggle {
+  constructor() {
+    const sw = document.getElementById("themeSwitch");
+    if (!sw) return;
+    applyDocumentTheme(document.documentElement.dataset.theme || effectiveTheme());
+    sw.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+      } catch (e) {}
+      applyDocumentTheme(next);
+    });
+    window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => {
+      if (getStoredThemeChoice() === "light" || getStoredThemeChoice() === "dark") return;
+      applyDocumentTheme(effectiveTheme());
+    });
+  }
+}
+
 // ===== VIEW TOGGLE =====
 class ViewToggle {
   constructor() {
@@ -434,6 +479,7 @@ function onScroll() {
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.hash) history.replaceState(null, "", window.location.pathname);
   window.scrollTo(0, 0);
+  new ThemeToggle();
   new ViewToggle();
   new ChatBot();
   new TerminalEffect();
