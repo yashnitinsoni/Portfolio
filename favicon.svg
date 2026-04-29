@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="YS">
+  <style>
+    .tile { fill: #141414; }
+    .mark {
+      fill: #c9b99a;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    @media (prefers-color-scheme: light) {
+      .tile { fill: #eceae4; }
+      .mark { fill: #5c4f38; }
+    }
+  </style>
+  <rect class="tile" width="32" height="32" rx="8" />
+  <text class="mark" x="16" y="16" text-anchor="middle" dominant-baseline="central">YS</text>
+</svg>

@@ -246,22 +246,26 @@ ul { list-style: none; }
 .theme-pill-switch__knob-face {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--neu-icon);
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
   pointer-events: none;
   transition: opacity 0.22s ease, transform 0.22s ease;
+  transform-origin: center center;
 }
 
 .theme-pill-switch__knob-face--sun {
   opacity: 0;
   transform: scale(0.88);
+  color: #000000;
 }
 
 .theme-pill-switch__knob-face--moon {
   opacity: 0;
   transform: scale(0.88);
+  color: #ffffff;
 }
 
 [data-theme="light"] .theme-pill-switch__knob-face--sun {
@@ -284,31 +288,19 @@ ul { list-style: none; }
   transform: scale(0.88);
 }
 
-.theme-pill-switch__moon-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
+.theme-pill-switch__knob-face svg {
+  display: block;
+  flex-shrink: 0;
 }
 
-.theme-pill-switch__knob-face--sun svg {
-  width: 12px;
-  height: 12px;
+.theme-pill-switch__sun-icon {
+  width: 13px;
+  height: 13px;
 }
 
-.theme-pill-switch__moon-wrap svg:nth-of-type(1) {
-  width: 10px;
-  height: 10px;
-}
-
-.theme-pill-switch__moon-wrap svg:nth-of-type(2) {
-  width: 4px;
-  height: 4px;
-}
-
-.theme-pill-switch__moon-wrap svg:nth-of-type(3) {
-  width: 3px;
-  height: 3px;
+.theme-pill-switch__moon-icon {
+  width: 11px;
+  height: 11px;
 }
 
 /* Website / AI (left) */
@@ -374,21 +366,31 @@ ul { list-style: none; }
 
 .nav-social {
   display: flex;
+  align-items: center;
   gap: 12px;
   margin-left: 20px;
 }
 
-.nav-social a img {
-  width: 20px;
-  height: 20px;
-  opacity: 0.5;
-  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+.nav-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  opacity: 0.55;
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
 }
 
-.nav-social a:hover img {
+.nav-social-link:hover {
   opacity: 1;
+  color: var(--text);
   transform: scale(1.1);
   filter: drop-shadow(0 0 4px var(--accent-glow));
+}
+
+.nav-social-svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .nav-toggle {
@@ -1030,6 +1032,10 @@ ul { list-style: none; }
 
 .timeline-dot img { width: 55%; height: auto; }
 
+[data-theme="light"] .timeline-dot img {
+  filter: brightness(0) invert(1);
+}
+
 .timeline-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1296,6 +1302,23 @@ ul { list-style: none; }
 .contact-info h3 { font-size: 22px; font-weight: 600; margin-bottom: 20px; }
 .contact-info p { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
 .contact-info p img { width: 16px; height: 16px; opacity: 0.6; }
+
+/* Light mode: remaining PNGs (resume, contact row, project buttons) are light on dark — invert to visible */
+[data-theme="light"] .btn-resume .btn-icon {
+  filter: brightness(0);
+  opacity: 0.88;
+}
+[data-theme="light"] .btn-resume:hover .btn-icon {
+  opacity: 1;
+}
+[data-theme="light"] .contact-info p img {
+  filter: brightness(0);
+  opacity: 0.55;
+}
+[data-theme="light"] .btn-github img {
+  filter: brightness(0);
+  opacity: 0.88;
+}
 
 .contact-form { flex: 1; display: flex; flex-direction: column; gap: 10px; }
 .form-row { display: flex; gap: 10px; }
