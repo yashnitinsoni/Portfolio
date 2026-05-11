@@ -283,7 +283,7 @@ class ViewToggle {
       btn.addEventListener("click", () => this.switchView(btn.dataset.view));
     });
   }
-  switchView(view) {
+  switchView(view, scrollTarget) {
     this.btns.forEach((b) => b.classList.remove("active"));
     document.querySelector(`[data-view="${view}"]`).classList.add("active");
     if (view === "ai") {
@@ -293,6 +293,12 @@ class ViewToggle {
     } else {
       this.chatOverlay.classList.remove("active");
       this.websiteContent.classList.remove("hidden");
+      if (scrollTarget) {
+        requestAnimationFrame(() => {
+          const el = document.querySelector(scrollTarget);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        });
+      }
     }
   }
 }
@@ -480,8 +486,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.location.hash) history.replaceState(null, "", window.location.pathname);
   window.scrollTo(0, 0);
   new ThemeToggle();
-  new ViewToggle();
+  window._viewToggle = new ViewToggle();
   new ChatBot();
+
+  // Make nav links work from AI chat view — switch back to website and scroll to section
+  document.querySelectorAll(".nav-links a, .mobile-menu a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const chatOverlay = document.getElementById("chatbotOverlay");
+      const isAiActive = chatOverlay && chatOverlay.classList.contains("active");
+      if (isAiActive && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+        e.preventDefault();
+        const target = link.getAttribute("href");
+        window._viewToggle.switchView("website", target);
+      }
+    });
+  });
   new TerminalEffect();
   new StatsCounter();
   new CardTilt();

@@ -1112,7 +1112,12 @@ ul { list-style: none; }
 }
 
 /* ===== SKILLS GRID ===== */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
 
 .skill-category {
   background: var(--surface);
@@ -1122,6 +1127,8 @@ ul { list-style: none; }
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .skill-category::before {
@@ -1153,7 +1160,7 @@ ul { list-style: none; }
   font-family: var(--mono);
 }
 
-.skill-items { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-items { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; flex: 1; }
 
 .skill-chip {
   display: inline-flex;
@@ -1175,7 +1182,20 @@ ul { list-style: none; }
   transform: translateY(-1px);
 }
 
-.skill-chip img { width: 16px; height: 16px; object-fit: contain; }
+.skill-chip img { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; }
+
+/* Inline SVG icons inside skill chips */
+.skill-svg-icon { width: 16px; height: 16px; flex-shrink: 0; display: inline-block; vertical-align: middle; }
+
+/* Invert dark logos in dark mode so they're visible (e.g. Next.js, JWT) */
+[data-theme="dark"] .skill-icon-invert { filter: invert(1); }
+[data-theme="light"] .skill-icon-invert { filter: none; }
+
+/* In light mode, make the grey SVG strokes darker so they're readable */
+[data-theme="light"] .skill-svg-icon path[stroke="#a1a1aa"],
+[data-theme="light"] .skill-svg-icon line[stroke="#a1a1aa"],
+[data-theme="light"] .skill-svg-icon polyline[stroke="#a1a1aa"] { stroke: #555; }
+[data-theme="light"] .skill-svg-icon rect[fill="#a1a1aa"] { fill: #555; }
 
 /* ===== CERTIFICATIONS ===== */
 .cert-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
@@ -1514,7 +1534,7 @@ ul { list-style: none; }
   .terminal-window { max-width: 100%; }
   .hero-stats { max-width: 100%; }
   .projects-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1560,6 +1580,7 @@ ul { list-style: none; }
 
   .hero-name { font-size: 36px; }
   .timeline-card { padding: 16px; }
+  .skills-grid { grid-template-columns: 1fr; }
   .skill-category { padding: 16px; }
   .cert-card { width: 100%; }
   .terminal-window { --terminal-height: 148px; }
